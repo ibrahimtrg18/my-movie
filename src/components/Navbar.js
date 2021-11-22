@@ -39,7 +39,7 @@ const Navbar = () => {
                     Now playing movies
                   </Link>
 
-                  <Link
+                  {/* <Link
                     to="/"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
@@ -79,7 +79,7 @@ const Navbar = () => {
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Popular people
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
