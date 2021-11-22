@@ -1,0 +1,16 @@
+.movie-item .description {
+  height: 150px;
+  overflow-y: hidden;
+}
+
+.movie-item .description:hover {
+  overflow-y: scroll;
+}
+
+.movie-item .image {
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-item:hover .image {
+  transform: scale(1.1);
+}
