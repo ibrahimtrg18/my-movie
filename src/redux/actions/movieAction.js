@@ -32,3 +32,18 @@ export const fetchGenresMovie = () => async (dispatch) => {
     return e;
   }
 };
+
+export const fetchUpcomingMovies = () => async (dispatch) => {
+  try {
+    const res = await fetch(
+      `${constants.BASE_URL}/movie/upcoming?api_key=${constants.API_KEY}`
+    );
+    const data = await res.json();
+    dispatch({
+      type: movieType.FETCH_UPCOMING_MOVIE,
+      payload: data.results,
+    });
+  } catch (e) {
+    return e;
+  }
+};
