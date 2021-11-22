@@ -18,7 +18,7 @@ const Navbar = () => {
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                   <Link
-                    to="/"
+                    to="/movie/top_rated"
                     class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                     aria-current="page"
                   >
