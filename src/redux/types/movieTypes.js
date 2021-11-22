@@ -1,0 +1,3 @@
+export default {
+  FETCH_TOP_RATED_MOVIES: "FETCH_TOP_RATED_MOVIES",
+};
