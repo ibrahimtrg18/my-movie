@@ -22,35 +22,63 @@ const Navbar = () => {
                     class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                     aria-current="page"
                   >
-                    Dashboard
+                    Top rated movies
                   </Link>
 
                   <Link
                     to="/"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Team
+                    Upcoming movies
                   </Link>
 
                   <Link
                     to="/"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Projects
+                    Now playing movies
                   </Link>
 
                   <Link
                     to="/"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Calendar
+                    Popular movies
                   </Link>
 
                   <Link
                     to="/"
                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Reports
+                    Popular TV shows
+                  </Link>
+
+                  <Link
+                    to="/"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Top rated TV shows
+                  </Link>
+
+                  <Link
+                    to="/"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    On the air TV shows
+                  </Link>
+
+                  <Link
+                    to="/"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Airing today TV shows
+                  </Link>
+
+                  <Link
+                    to="/"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Popular people
                   </Link>
                 </div>
               </div>
