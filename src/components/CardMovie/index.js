@@ -1,11 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import constants from "../../utils/constants";
 import "./style.css";
+import { addWatchList } from "../../redux/actions/movieAction";
 
 const CardMovie = (props) => {
   const { movie, loading } = props;
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const genres = useSelector((state) => state.movie.genres);
+
+  const onAddToWatchlist = (id) => {
+    dispatch(addWatchList({ mediaId: id }));
+  };
 
   if (loading) {
     return (
@@ -41,8 +48,15 @@ const CardMovie = (props) => {
     );
   }
 
-  const { title, genre_ids, poster_path, overview, vote_average, vote_count } =
-    movie;
+  const {
+    id,
+    title,
+    genre_ids,
+    poster_path,
+    overview,
+    vote_average,
+    vote_count,
+  } = movie;
 
   return (
     <div className="movie-item c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
@@ -54,7 +68,30 @@ const CardMovie = (props) => {
         />
       </div>
       <div className="p-4">
-        <h2 className="mt-2 mb-2  font-bold">{title}</h2>
+        <h2 className="relative mt-2 mb-2 font-bold">
+          {title}
+          {auth.userSession && (
+            <div
+              className="bookmark absolute top-0 right-0 items-center cursor-pointer"
+              onClick={() => onAddToWatchlist(id)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-bookmark"
+              >
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+          )}
+        </h2>
         <p className="text-sm description">{overview}</p>
       </div>
       <div className="p-4 border-t border-b text-xs text-gray-700">
