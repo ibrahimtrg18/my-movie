@@ -23,15 +23,17 @@ const CardMovie = (props) => {
             alt=""
           />
         </div>
-        <div className="p-4">
-          <h2 className="bg-gray-200 rounded mt-2 mb-2 font-bold"></h2>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
-          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+        <div>
+          <h2 className="px-4 bg-gray-200 rounded mt-2 mb-2 font-bold"></h2>
+          <div className="px-4">
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+            <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          </div>
         </div>
         <div className="p-4 flex border-t border-b text-xs text-gray-700">
           {[...Array(3)].map((v, i) => {
@@ -67,8 +69,8 @@ const CardMovie = (props) => {
           alt=""
         />
       </div>
-      <div className="p-4">
-        <h2 className="relative mt-2 mb-2 font-bold">
+      <div>
+        <h2 className="px-4 relative mt-2 mb-2 font-bold">
           {title}
           {actionAddWatchlist && auth.userSession && (
             <div
@@ -92,7 +94,7 @@ const CardMovie = (props) => {
             </div>
           )}
         </h2>
-        <p className="text-sm description">{overview}</p>
+        <p className="px-4 text-sm description">{overview}</p>
       </div>
       <div className="p-4 border-t border-b text-xs text-gray-700">
         {genres &&
