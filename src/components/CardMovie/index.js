@@ -70,11 +70,11 @@ const CardMovie = (props) => {
         />
       </div>
       <div>
-        <h2 className="px-4 relative mt-2 mb-2 font-bold">
+        <h2 className="px-4 relative mt-2 mb-2 font-bold text-gray-700">
           {title}
           {actionAddWatchlist && auth.userSession && (
             <div
-              className="bookmark absolute top-0 right-0 items-center cursor-pointer"
+              className="bookmark absolute top-0 right-2 items-center cursor-pointer bg-white"
               onClick={() => onAddToWatchlist(id)}
             >
               <svg
