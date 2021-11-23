@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   requestToken: "",
   userToken: "",
   userSession: "",
+  account: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +17,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     case authTypes.FETCH_AUTHENTICATION_SESSION_NEW: {
       return { ...state, userSession: action.payload };
+    }
+    case authTypes.FETCH_ACCOUNT: {
+      return { ...state, account: action.payload };
     }
     default:
       return state;

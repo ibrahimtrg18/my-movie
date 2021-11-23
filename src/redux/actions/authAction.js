@@ -88,3 +88,20 @@ export const loginAccount =
       return e;
     }
   };
+
+export const fetchAccount = () => async (dispatch, getState) => {
+  try {
+    const { auth } = getState();
+    const res = await fetch(
+      `${constants.BASE_URL}/account?api_key=${constants.API_KEY}&session_id=${auth.userSession}`
+    );
+    const data = await res.json();
+    dispatch({
+      type: authTypes.FETCH_ACCOUNT,
+      payload: data,
+    });
+    return data;
+  } catch (e) {
+    return e;
+  }
+};
