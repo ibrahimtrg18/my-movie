@@ -23,10 +23,13 @@ const WrapperModal = ({ children }) => {
   );
 };
 
-const Modal = ({ children }) => {
+const Modal = ({ children, toggle }) => {
   const modalRoot = document.getElementById("modal-root");
 
-  return createPortal(<WrapperModal>{children}</WrapperModal>, modalRoot);
+  return createPortal(
+    toggle && <WrapperModal>{children}</WrapperModal>,
+    modalRoot
+  );
 };
 
 export default Modal;
