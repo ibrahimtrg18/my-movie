@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NavLink from "./NavLink";
 import ModalLogin from "../components/ModalLogin";
+import { fetchAccount, logoutAccount } from "../redux/actions/authAction";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
+  const auth = useSelector((state) => state.auth);
+  const account = useSelector((state) => state.auth.account);
+
+  useEffect(() => {
+    if (auth.userSession) {
+      dispatch(fetchAccount());
+    }
+  }, [auth.userSession]);
+
+  const onLogoutAccount = () => {
+    dispatch(logoutAccount());
+  };
+
+  console.log("debug ", { auth, account });
 
   return (
     <div className="min-h-full">
@@ -57,12 +74,21 @@ const Navbar = () => {
                   </NavLink>
                 </div>
 
-                <span
-                  className="text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
-                  onClick={() => setToggle(true)}
-                >
-                  Login
-                </span>
+                {account ? (
+                  <span
+                    className="text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                    onClick={() => onLogoutAccount()}
+                  >
+                    Logout {account.username}
+                  </span>
+                ) : (
+                  <span
+                    className="text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
+                    onClick={() => setToggle(true)}
+                  >
+                    Login
+                  </span>
+                )}
 
                 <ModalLogin
                   toggle={toggle}
