@@ -1,7 +1,6 @@
 import movieType from "../types/movieTypes";
 
 const INITIAL_STATE = {
-  topRatedMovies: [],
   upcomingMovies: [],
   nowPlayingMovies: [],
   popularMovies: [],
@@ -10,9 +9,6 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case movieType.FETCH_TOP_RATED_MOVIES: {
-      return { ...state, topRatedMovies: action.payload };
-    }
     case movieType.FETCH_UPCOMING_MOVIE: {
       return { ...state, upcomingMovies: action.payload };
     }
