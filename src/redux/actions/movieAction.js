@@ -111,3 +111,32 @@ export const fetchGenresMovie = () => async (dispatch) => {
     return e;
   }
 };
+
+export const addWatchList =
+  ({ mediaId }) =>
+  async (dispatch, getState) => {
+    try {
+      const { auth } = getState();
+      const res = await fetch(
+        `${constants.BASE_URL}/account/${auth.account.id}/watchlist?api_key=${constants.API_KEY}&session_id=${auth.userSession}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            media_type: "movie",
+            media_id: mediaId,
+            watchlist: true,
+          }),
+        }
+      );
+      const data = await res.json();
+      dispatch({
+        type: movieType.ADD_WATCHLIST_MOVIE,
+        payload: data,
+      });
+    } catch (e) {
+      return e;
+    }
+  };
