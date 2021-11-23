@@ -1,8 +1,7 @@
 import React from "react";
+import { createPortal } from "react-dom";
 
-const Modal = (props) => {
-  const { children } = props;
-
+const WrapperModal = ({ children }) => {
   return (
     <div
       class="fixed z-10 inset-0 overflow-y-auto"
@@ -22,6 +21,12 @@ const Modal = (props) => {
       </div>
     </div>
   );
+};
+
+const Modal = ({ children }) => {
+  const modalRoot = document.getElementById("modal-root");
+
+  return createPortal(<WrapperModal>{children}</WrapperModal>, modalRoot);
 };
 
 export default Modal;
