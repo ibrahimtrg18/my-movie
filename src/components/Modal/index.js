@@ -6,19 +6,19 @@ const WrapperModal = (props) => {
 
   return (
     <div
-      class="fixed z-10 inset-0 overflow-y-auto"
+      className="fixed z-10 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div
-          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
           aria-hidden="true"
           onClick={() => setToggle(false)}
         />
 
-        <div class="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 sm:my-0 sm:align-middle sm:max-w-lg sm:w-full">
+        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 sm:my-0 sm:align-middle sm:max-w-lg sm:w-full">
           {children}
         </div>
       </div>
