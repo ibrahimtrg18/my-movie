@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
   return (
@@ -17,27 +17,32 @@ const Navbar = () => {
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <Link
+                  <NavLink
                     to="/movie/top_rated"
-                    className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page"
+                    className="hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    activeClassName="bg-gray-900 text-white"
+                    inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
                     Top rated movies
-                  </Link>
+                  </NavLink>
 
-                  <Link
+                  <NavLink
                     to="/movie/upcoming"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    activeClassName="bg-gray-900 text-white"
+                    inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
                     Upcoming movies
-                  </Link>
+                  </NavLink>
 
-                  <Link
+                  <NavLink
                     to="/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    activeClassName="bg-gray-900 text-white"
+                    inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
                     Now playing movies
-                  </Link>
+                  </NavLink>
 
                   {/* <Link
                     to="/"
