@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // components
 import CardMovie from "../components/CardMovie";
+import Pagination from "../components/Pagination";
 // actions
 import { fetchPopularMovies } from "../redux/actions/movieAction";
 
 const PopularMovie = () => {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   const popularMovies = useSelector((state) => state.popularMovies);
 
   useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, []);
+    dispatch(fetchPopularMovies({ page }));
+  }, [page]);
 
   return (
     <div>
@@ -31,6 +33,7 @@ const PopularMovie = () => {
               />
             ))}
       </div>
+      <Pagination page={page} setPage={setPage} />
     </div>
   );
 };
