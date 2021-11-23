@@ -8,7 +8,7 @@ import { fetchNowPlayingMovies } from "../redux/actions/movieAction";
 const NowPlayingMovie = () => {
   const dispatch = useDispatch();
 
-  const nowPlayingMovies = useSelector((state) => state.movie.nowPlayingMovies);
+  const nowPlayingMovies = useSelector((state) => state.nowPlayingMovies);
 
   useEffect(() => {
     dispatch(fetchNowPlayingMovies());
@@ -17,10 +17,18 @@ const NowPlayingMovie = () => {
   return (
     <div>
       <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-        {nowPlayingMovies &&
-          nowPlayingMovies.map((movie, i) => (
-            <CardMovie key={i} movie={movie} />
-          ))}
+        {nowPlayingMovies.loading
+          ? [...Array(6)].map((v, i) => (
+              <CardMovie key={i} loading={nowPlayingMovies.loading} />
+            ))
+          : nowPlayingMovies.value &&
+            nowPlayingMovies.value.map((movie, i) => (
+              <CardMovie
+                key={i}
+                movie={movie}
+                loading={nowPlayingMovies.loading}
+              />
+            ))}
       </div>
     </div>
   );

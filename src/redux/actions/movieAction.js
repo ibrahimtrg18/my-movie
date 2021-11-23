@@ -1,6 +1,7 @@
 import constants from "../../utils/constants";
 import topRatedMovieTypes from "../types/topRatedMovieTypes";
 import upcomingMovieTypes from "../types/upcomingMovieTypes";
+import nowPlayingMovieTypes from "../types/nowPlayingMovieTypes";
 import movieType from "../types/movieTypes";
 
 export const fetchTopRatedMovies =
@@ -53,15 +54,21 @@ export const fetchNowPlayingMovies =
   ({ page = 1 } = {}) =>
   async (dispatch) => {
     try {
+      dispatch({
+        type: nowPlayingMovieTypes.FETCH_NOW_PLAYING_MOVIES_REQUEST,
+      });
       const res = await fetch(
         `${constants.BASE_URL}/movie/now_playing?api_key=${constants.API_KEY}&page=${page}`
       );
       const data = await res.json();
       dispatch({
-        type: movieType.FETCH_NOW_PLAYING_MOVIES,
+        type: nowPlayingMovieTypes.FETCH_NOW_PLAYING_MOVIES_SUCCESS,
         payload: data.results,
       });
     } catch (e) {
+      dispatch({
+        type: nowPlayingMovieTypes.FETCH_NOW_PLAYING_MOVIES_FAILURE,
+      });
       return e;
     }
   };
