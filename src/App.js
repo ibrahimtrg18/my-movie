@@ -7,6 +7,7 @@ import TopRateMovie from "./views/TopRateMovie";
 import UpcomingMovie from "./views/UpcomingMovie";
 import NowPlayingMovie from "./views/NowPlayingMovie";
 import PopularMovie from "./views/PopularMovie";
+import WatchListMovie from "./views/WatchListMovie";
 // actions
 import { fetchGenresMovie } from "./redux/actions/movieAction";
 import "./App.css";
@@ -26,6 +27,7 @@ function App() {
           <Route path="/movie/upcoming" element={<UpcomingMovie />} />
           <Route path="/movie/now_playing" element={<NowPlayingMovie />} />
           <Route path="/movie/popular" element={<PopularMovie />} />
+          <Route path="/movie/watchlist" element={<WatchListMovie />} />
         </Routes>
       </Layout>
     </BrowserRouter>
