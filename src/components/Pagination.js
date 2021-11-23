@@ -29,7 +29,7 @@ const Pagination = (props) => {
       </div>
       <div
         aria-current="page"
-        className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+        className="z-10 bg-gray-50 border-gray-500 text-gray-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
       >
         {page}
       </div>
