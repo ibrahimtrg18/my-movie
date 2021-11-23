@@ -21,6 +21,9 @@ export default (state = INITIAL_STATE, action) => {
     case authTypes.FETCH_ACCOUNT: {
       return { ...state, account: action.payload };
     }
+    case authTypes.LOGOUT_ACCOUNT: {
+      return INITIAL_STATE;
+    }
     default:
       return state;
   }

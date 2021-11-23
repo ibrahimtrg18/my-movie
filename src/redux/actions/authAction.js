@@ -105,3 +105,13 @@ export const fetchAccount = () => async (dispatch, getState) => {
     return e;
   }
 };
+
+export const logoutAccount = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: authTypes.LOGOUT_ACCOUNT,
+    });
+  } catch (e) {
+    return e;
+  }
+};
