@@ -34,7 +34,7 @@ const SearchMovie = () => {
   };
 
   return (
-    <div>
+    <div style={{ minHeight: "calc(100vh - 92px)" }}>
       <div className="px-3 sm:px-6 lg:px-9 pt-4">
         <Input
           label="Search"
