@@ -3,6 +3,7 @@ import topRatedMovieTypes from "../types/topRatedMovieTypes";
 import upcomingMovieTypes from "../types/upcomingMovieTypes";
 import nowPlayingMovieTypes from "../types/nowPlayingMovieTypes";
 import popularMovieTypes from "../types/popularMovieTypes";
+import watchlistMovieTypes from "../types/watchlistMovieTypes";
 import movieType from "../types/movieTypes";
 
 export const fetchTopRatedMovies =
@@ -137,6 +138,30 @@ export const addWatchList =
         payload: data,
       });
     } catch (e) {
+      return e;
+    }
+  };
+
+export const fetchWatchlistMovies =
+  ({ page = 1 } = {}) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: watchlistMovieTypes.FETCH_WATCHLIST_MOVIE_REQUEST,
+      });
+      const { auth } = getState();
+      const res = await fetch(
+        `${constants.BASE_URL}/account/${auth.account.id}/watchlist/movies?api_key=${constants.API_KEY}&session_id=${auth.userSession}&page=${page}`
+      );
+      const data = await res.json();
+      dispatch({
+        type: watchlistMovieTypes.FETCH_WATCHLIST_MOVIE_SUCCESS,
+        payload: data.results,
+      });
+    } catch (e) {
+      dispatch({
+        type: watchlistMovieTypes.FETCH_WATCHLIST_MOVIE_FAILURE,
+      });
       return e;
     }
   };

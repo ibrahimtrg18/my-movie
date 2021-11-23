@@ -5,6 +5,7 @@ import topRatedMovieReducer from "./topRatedMovieReducer";
 import upcomingMovieReducer from "./upcomingMovieReducer";
 import nowPlayingMovieReducer from "./nowPlayingMovieReducer";
 import popularMovieReducer from "./popularMovieReducer";
+import watchlistReducer from "./watchlistReducer";
 
 export default combineReducers({
   movie: movieReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   upcomingMovies: upcomingMovieReducer,
   nowPlayingMovies: nowPlayingMovieReducer,
   popularMovies: popularMovieReducer,
+  watchlistMovies: watchlistReducer,
 });
