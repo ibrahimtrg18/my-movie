@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Modal from "../Modal";
 import Input from "../Input";
 import Button from "../Button";
+import { loginAccount } from "../../redux/actions/authAction";
 
 const ModalLogin = (props) => {
   const { toggle, setToggle, ...restProps } = props;
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+  });
+
+  const onInputChange = (e) => {
+    return setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const onLoginSubmit = (e) => {
     e.preventDefault();
-    return;
+    dispatch(loginAccount(state));
+    setToggle(false);
   };
 
   return (
@@ -25,6 +41,7 @@ const ModalLogin = (props) => {
             type="text"
             placeholder="username"
             customClass="mb-1"
+            onChange={(e) => onInputChange(e)}
           />
           <Input
             label="Password"
@@ -33,6 +50,7 @@ const ModalLogin = (props) => {
             type="password"
             placeholder="********"
             customClass="mb-2"
+            onChange={(e) => onInputChange(e)}
           />
           <Button type="submit">Login</Button>
         </form>
