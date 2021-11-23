@@ -4,11 +4,45 @@ import constants from "../../utils/constants";
 import "./style.css";
 
 const CardMovie = (props) => {
-  const { movie } = props;
+  const { movie, loading } = props;
+  const genres = useSelector((state) => state.movie.genres);
+
+  if (loading) {
+    return (
+      <div className="movie-item c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+        <div className="bg-gray-200 rounded relative pb-48 overflow-hidden">
+          <div
+            className="image absolute inset-0 h-full w-full object-cover"
+            alt=""
+          />
+        </div>
+        <div className="p-4">
+          <h2 className="bg-gray-200 rounded mt-2 mb-2 font-bold"></h2>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+          <p className="bg-gray-200 rounded text-sm h-5 mb-1"></p>
+        </div>
+        <div className="p-4 flex border-t border-b text-xs text-gray-700">
+          {[...Array(3)].map((v, i) => {
+            return <span className="bg-gray-200 rounded mr-1 w-20 h-5"></span>;
+          })}
+        </div>
+        <div className="p-4 flex items-center text-sm text-gray-600">
+          <span className="bg-gray-200 rounded mr-auto w-20 h-5"></span>
+          {[...Array(5)].map((v, i) => {
+            return <span className="bg-gray-200 rounded mr-1 w-4 h-3"></span>;
+          })}
+        </div>
+      </div>
+    );
+  }
+
   const { title, genre_ids, poster_path, overview, vote_average, vote_count } =
     movie;
-
-  const genres = useSelector((state) => state.movie.genres);
 
   return (
     <div className="movie-item c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
