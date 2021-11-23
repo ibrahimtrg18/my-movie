@@ -40,7 +40,7 @@ const ModalLogin = (props) => {
             name="username"
             type="text"
             placeholder="username"
-            customClass="mb-1"
+            customClass="mb-1 w-full"
             onChange={(e) => onInputChange(e)}
           />
           <Input
@@ -49,7 +49,7 @@ const ModalLogin = (props) => {
             name="password"
             type="password"
             placeholder="********"
-            customClass="mb-2"
+            customClass="mb-1 w-full"
             onChange={(e) => onInputChange(e)}
           />
           <Button type="submit">Login</Button>

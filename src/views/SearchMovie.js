@@ -42,7 +42,7 @@ const SearchMovie = () => {
           name="search"
           type="text"
           placeholder="search"
-          customClass="mb-1"
+          customClass="w-full"
           value={query}
           onChange={(e) => onSearchChange(e)}
         />
