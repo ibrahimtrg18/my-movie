@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import NavLink from "./NavLink";
 import ModalLogin from "../components/ModalLogin";
+import Input from "../components/Input";
+// actions
 import { fetchAccount, logoutAccount } from "../redux/actions/authAction";
+import { fetchSearchMovies } from "../redux/actions/movieAction";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [query, setQuery] = useState("");
+  const [debounceQuery, setDebounceQuery] = useState("");
+  let timeoutId = null;
   const auth = useSelector((state) => state.auth);
   const account = useSelector((state) => state.auth.account);
 
@@ -19,6 +27,21 @@ const Navbar = () => {
 
   const onLogoutAccount = () => {
     dispatch(logoutAccount());
+  };
+
+  useEffect(() => {
+    timeoutId = setTimeout(() => setDebounceQuery(query), 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [query]);
+
+  useEffect(() => {
+    dispatch(fetchSearchMovies({ query: debounceQuery }));
+  }, [debounceQuery]);
+
+  const onSearchChange = (e) => {
+    setQuery(e.target.value);
+    navigate(`/movie/search?query=${e.target.value}`);
   };
 
   return (
@@ -55,65 +78,74 @@ const Navbar = () => {
                   showMenu ? "block sm:flex" : "hidden sm:flex"
                 } block sm:flex justify-between w-full`}
               >
-                <div className="ml-0 sm:ml-10 block sm:flex items-baseline">
+                <div className="ml-0 sm:ml-10 block sm:flex items-baseline items-center">
                   <NavLink
                     to="/movie/top_rated"
-                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4"
+                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2"
                     activeClassName="bg-gray-900 text-white"
                     inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
-                    Top rated movies
+                    Top rated
                   </NavLink>
 
                   <NavLink
                     to="/movie/upcoming"
-                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4"
+                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2"
                     activeClassName="bg-gray-900 text-white"
                     inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
-                    Upcoming movies
+                    Upcoming
                   </NavLink>
 
                   <NavLink
                     to="/movie/now_playing"
-                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4"
+                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2"
                     activeClassName="bg-gray-900 text-white"
                     inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
-                    Now playing movies
+                    Now playing
                   </NavLink>
 
                   <NavLink
                     to="/movie/popular"
-                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4"
+                    className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2"
                     activeClassName="bg-gray-900 text-white"
                     inactiveClassName="text-gray-300 hover:bg-gray-700"
                   >
-                    Popular movies
+                    Popular
                   </NavLink>
 
                   {account && (
                     <NavLink
                       to="/movie/watchlist"
-                      className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4"
+                      className="block hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2"
                       activeClassName="bg-gray-900 text-white"
                       inactiveClassName="text-gray-300 hover:bg-gray-700"
                     >
-                      Watchlist Movie
+                      Watchlist
                     </NavLink>
                   )}
+
+                  <Input
+                    id="search"
+                    name="search"
+                    type="text"
+                    placeholder="search"
+                    value={query}
+                    onChange={(e) => onSearchChange(e)}
+                  />
                 </div>
 
                 {account ? (
                   <span
-                    className="block text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4 cursor-pointer"
+                    className="block text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2 cursor-pointer"
                     onClick={() => onLogoutAccount()}
                   >
                     Logout {account.username}
                   </span>
                 ) : (
                   <span
-                    className="block text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-4 cursor-pointer"
+                    className="block text-white hover:text-white px-3 py-2 rounded-md text-sm font-medium mx-0 sm:mx-2 cursor-pointer"
                     onClick={() => setToggle(true)}
                   >
                     Login
