@@ -27,6 +27,7 @@ const TopRateMovie = () => {
                 key={i}
                 movie={movie}
                 loading={topRatedMovies.loading}
+                actionAddWatchlist
               />
             ))}
       </div>

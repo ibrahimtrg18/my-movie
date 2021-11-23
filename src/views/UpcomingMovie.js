@@ -30,6 +30,7 @@ const UpcomingMovie = () => {
                 key={i}
                 movie={movie}
                 loading={upcomingMovies.loading}
+                actionAddWatchlist
               />
             ))}
       </div>

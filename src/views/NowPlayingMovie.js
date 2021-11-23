@@ -27,6 +27,7 @@ const NowPlayingMovie = () => {
                 key={i}
                 movie={movie}
                 loading={nowPlayingMovies.loading}
+                actionAddWatchlist
               />
             ))}
       </div>

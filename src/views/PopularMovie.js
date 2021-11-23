@@ -27,6 +27,7 @@ const PopularMovie = () => {
                 key={i}
                 movie={movie}
                 loading={popularMovies.loading}
+                actionAddWatchlist
               />
             ))}
       </div>

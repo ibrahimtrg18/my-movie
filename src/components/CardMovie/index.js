@@ -5,7 +5,7 @@ import "./style.css";
 import { addWatchList } from "../../redux/actions/movieAction";
 
 const CardMovie = (props) => {
-  const { movie, loading } = props;
+  const { movie, loading, actionAddWatchlist } = props;
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const genres = useSelector((state) => state.movie.genres);
@@ -70,7 +70,7 @@ const CardMovie = (props) => {
       <div className="p-4">
         <h2 className="relative mt-2 mb-2 font-bold">
           {title}
-          {auth.userSession && (
+          {actionAddWatchlist && auth.userSession && (
             <div
               className="bookmark absolute top-0 right-0 items-center cursor-pointer"
               onClick={() => onAddToWatchlist(id)}
