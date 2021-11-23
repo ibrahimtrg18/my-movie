@@ -2,6 +2,7 @@ import constants from "../../utils/constants";
 import topRatedMovieTypes from "../types/topRatedMovieTypes";
 import upcomingMovieTypes from "../types/upcomingMovieTypes";
 import nowPlayingMovieTypes from "../types/nowPlayingMovieTypes";
+import popularMovieTypes from "../types/popularMovieTypes";
 import movieType from "../types/movieTypes";
 
 export const fetchTopRatedMovies =
@@ -77,15 +78,21 @@ export const fetchPopularMovies =
   ({ page = 1 } = {}) =>
   async (dispatch) => {
     try {
+      dispatch({
+        type: popularMovieTypes.FETCH_POPULAR_MOVIES_REQUEST,
+      });
       const res = await fetch(
         `${constants.BASE_URL}/movie/popular?api_key=${constants.API_KEY}&page=${page}`
       );
       const data = await res.json();
       dispatch({
-        type: movieType.FETCH_POPULAR_MOVIES,
+        type: popularMovieTypes.FETCH_POPULAR_MOVIES_SUCCESS,
         payload: data.results,
       });
     } catch (e) {
+      dispatch({
+        type: popularMovieTypes.FETCH_POPULAR_MOVIES_FAILURE,
+      });
       return e;
     }
   };
