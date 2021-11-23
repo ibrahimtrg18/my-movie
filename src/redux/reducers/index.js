@@ -6,6 +6,7 @@ import upcomingMovieReducer from "./upcomingMovieReducer";
 import nowPlayingMovieReducer from "./nowPlayingMovieReducer";
 import popularMovieReducer from "./popularMovieReducer";
 import watchlistReducer from "./watchlistReducer";
+import searchMovieReducer from "./searchMovieReducer";
 
 export default combineReducers({
   movie: movieReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   nowPlayingMovies: nowPlayingMovieReducer,
   popularMovies: popularMovieReducer,
   watchlistMovies: watchlistReducer,
+  searchMovies: searchMovieReducer,
 });

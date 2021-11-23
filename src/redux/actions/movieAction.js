@@ -4,6 +4,7 @@ import upcomingMovieTypes from "../types/upcomingMovieTypes";
 import nowPlayingMovieTypes from "../types/nowPlayingMovieTypes";
 import popularMovieTypes from "../types/popularMovieTypes";
 import watchlistMovieTypes from "../types/watchlistMovieTypes";
+import searchMovieTypes from "../types/searchMovieTypes";
 import movieType from "../types/movieTypes";
 
 export const fetchTopRatedMovies =
@@ -161,6 +162,29 @@ export const fetchWatchlistMovies =
     } catch (e) {
       dispatch({
         type: watchlistMovieTypes.FETCH_WATCHLIST_MOVIE_FAILURE,
+      });
+      return e;
+    }
+  };
+
+export const fetchSearchMovies =
+  ({ page = 1, query = "" } = {}) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: searchMovieTypes.FETCH_SEARCH_MOVIE_REQUEST,
+      });
+      const res = await fetch(
+        `${constants.BASE_URL}/search/movie/?api_key=${constants.API_KEY}&query=${query}&page=${page}`
+      );
+      const data = await res.json();
+      dispatch({
+        type: searchMovieTypes.FETCH_SEARCH_MOVIE_SUCCESS,
+        payload: data.results,
+      });
+    } catch (e) {
+      dispatch({
+        type: searchMovieTypes.FETCH_SEARCH_MOVIE_FAILURE,
       });
       return e;
     }
