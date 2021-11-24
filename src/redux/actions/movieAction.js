@@ -175,7 +175,7 @@ export const fetchSearchMovies =
         type: searchMovieTypes.FETCH_SEARCH_MOVIE_REQUEST,
       });
       const res = await fetch(
-        `${constants.BASE_URL}/search/movie/?api_key=${constants.API_KEY}&query=${query}&page=${page}`
+        `${constants.BASE_URL}/search/movie?api_key=${constants.API_KEY}&query=${query}&page=${page}`
       );
       const data = await res.json();
       dispatch({
